@@ -1,0 +1,219 @@
+/* 🔥 Reset + Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔥 Root Theme */
+:root {
+  --bg: #020617;
+  --card: #0f172a;
+  --primary: #22c55e;
+  --primary-dark: #15803d;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: #1e293b;
+}
+
+/* 🌍 Root + Body */
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* 📦 Layout Container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* 🧊 Cards (GLOBAL USE) */
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ✏️ Inputs */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+
+  outline: none;
+  transition: 0.2s;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Focus */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* 🔽 Dropdown */
+select {
+  cursor: pointer;
+}
+
+/* 🔘 Buttons */
+button {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+
+/* 🧾 Headings */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* 📊 Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* 📱 Responsive Grid */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 📱 Mobile Fix */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* ❌ Overflow Fix (IMPORTANT) */
+img, table, input, select, textarea, div {
+  max-width: 100%;
+}
+
+.card,
+.profile-card,
+.bill-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: auto !important;
+}
+
+/* 🔥 ALL PAGE WRAPPER FIX */
+.container,
+.profile-container,
+.bills-container,
+.dashboard-container,
+.invoice-container-fixed,
+.login-container,
+.analytics-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* 🔥 ALL CARDS FIX */
+.card,
+.profile-card,
+.bill-card,
+.dashboard-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* 🔥 FLEX FIX (common overflow issue) */
+div {
+  min-width: 0;
+}
+
+/* 🔥 GRID FIX */
+.grid {
+  width: 100%;
+}
+
+/* 🔥 BUTTON / INPUT overflow */
+button,
+input,
+select {
+  max-width: 100%;
+}

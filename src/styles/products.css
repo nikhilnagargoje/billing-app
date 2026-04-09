@@ -1,0 +1,84 @@
+/* 🌈 FULL WIDTH FIX */
+.container {
+  width: 100%;
+  max-width: 100%;   /* ❌ remove 1000px limit */
+  margin: 0;
+  padding: 14px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 🧾 CARD FULL WIDTH */
+.product-card {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #1e293b;
+}
+
+/* 📊 GRID IMPROVE */
+.product-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* 💰 COLORS */
+.selling { color: #22c55e; font-weight: 600; }
+.cost { color: #ef4444; font-weight: 600; }
+.final { color: #22c55e; font-weight: 600; }
+
+/* 🎯 BUTTONS */
+.product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.product-actions button {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+}
+
+.product-actions button:first-child {
+  background: #22c55e;
+}
+
+.product-actions button:last-child {
+  background: #ef4444;
+}
+
+/* 📱 MOBILE PERFECT */
+@media (max-width: 480px) {
+
+  .container {
+    padding: 10px;
+  }
+
+  /* 👇 cards full stretch */
+  .product-card {
+    padding: 12px;
+  }
+
+  /* 👇 stack content */
+  .product-info {
+    grid-template-columns: 1fr;
+  }
+
+  /* 👇 buttons full width */
+  .product-actions {
+    flex-direction: column;
+  }
+
+  .product-actions button {
+    width: 100%;
+  }
+}

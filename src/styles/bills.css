@@ -1,0 +1,159 @@
+/* 🌌 Container */
+.bills-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+
+  background: linear-gradient(135deg, #020617, #0f172a);
+  min-height: 100vh;
+  color: #e2e8f0;
+}
+
+/* 🧾 Heading */
+.bills-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  letter-spacing: 1px;
+
+  animation: fadeDown 0.6s ease;
+}
+
+/* 🔍 Search */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+
+  margin-bottom: 20px;
+  transition: 0.25s;
+}
+
+.search-box:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+/* 📊 Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  padding: 18px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+
+  text-align: center;
+
+  border: 1px solid #1e293b;
+
+  transition: 0.3s;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.summary-card p {
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.summary-card h3 {
+  font-size: 20px;
+}
+
+/* 🧾 Bills List */
+.bill-card {
+  margin-bottom: 15px;
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid #1e293b;
+
+  transition: 0.25s;
+}
+
+.bill-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Header */
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Body */
+.bill-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.bill-body p {
+  font-size: 14px;
+}
+
+/* 💰 Colors */
+.amount-positive {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.amount-negative {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* ❌ No Bills */
+.no-bills {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+/* 📱 Mobile Fix */
+@media (max-width: 768px) {
+  .bill-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bill-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 🎬 Animations */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
