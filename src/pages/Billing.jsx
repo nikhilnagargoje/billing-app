@@ -36,11 +36,42 @@ export default function Billing() {
   const [extraAmount, setExtraAmount] = useState("");
 
   const invoiceRef = useRef();
-  const userId = auth.currentUser?.uid;
+ const [userId, setUserId] = useState(null);
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserId(user.uid);
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
 
   const handlePrint = useReactToPrint({
     contentRef: invoiceRef,
+    
   });
+
+  const handleDownloadAndWhatsApp = () => {
+  if (!customerPhone) return alert("Enter customer phone");
+
+  const phone = customerPhone.replace(/\D/g, "");
+
+  const message = `Hello ${customerName || ""}, your bill is ready.
+Total: ₹${getTotal().toFixed(2)}
+Please find attached invoice.`;
+
+  const url = `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`;
+
+  // 👉 1. FIRST WhatsApp open करा (important)
+  window.open(url, "_blank");
+
+  // 👉 2. मग print (PDF) open करा delay नंतर
+  setTimeout(() => {
+    handlePrint();
+  }, 800); // delay must
+};
 
   // 🔥 Bill No
   useEffect(() => {
@@ -353,8 +384,25 @@ export default function Billing() {
 
       <br /><br />
 
-      <button onClick={handlePrint}>Print Invoice</button>
-      <button onClick={saveBill}>Save Bill</button>
+<button onClick={handlePrint}>Print Invoice</button>
+
+<button 
+  onClick={handleDownloadAndWhatsApp}
+  style={{
+    background: "#25D366",
+    color: "#fff",
+    marginLeft: "10px"
+  }}
+>
+  PDF + WhatsApp
+</button>
+
+<button 
+  onClick={saveBill}
+  style={{ marginLeft: "10px" }}
+>
+  Save Bill
+</button>
 
       <div style={{ display: "none" }}>
         <Invoice

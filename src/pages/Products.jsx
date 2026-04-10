@@ -15,7 +15,23 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [editId, setEditId] = useState(null);
 
-  const userId = auth.currentUser?.uid;
+  const [userId, setUserId] = useState(null);
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserId(user.uid);
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
+useEffect(() => {
+  if (userId) {
+    fetchProducts();
+  }
+}, [userId]);
 
   // Fetch products
   const fetchProducts = async () => {
@@ -46,7 +62,7 @@ export default function Products() {
       await updateDoc(doc(db, "users", userId, "products", editId), productData);
       setEditId(null);
     } else {
-      await addDoc(collection(db, userId, "products"), productData);
+      await addDoc(collection(db, "users", userId, "products"), productData);
     }
 
     setName(""); setPrice(""); setDiscount(""); setGst("");

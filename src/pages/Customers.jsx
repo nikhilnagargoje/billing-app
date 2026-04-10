@@ -7,7 +7,19 @@ export default function Customers() {
   const [customers, setCustomers] = useState([]);
   const [allCustomers, setAllCustomers] = useState([]); // ✅ backup
 
-  const userId = auth.currentUser?.uid;
+ const [userId, setUserId] = useState(null);
+ useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserId(user.uid);
+    } else {
+      setUserId(null);
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
 
   const fetchCustomers = async () => {
     if (!userId) return;
@@ -42,8 +54,10 @@ export default function Customers() {
   };
 
   useEffect(() => {
+  if (userId) {
     fetchCustomers();
-  }, [userId]);
+  }
+}, [userId]);
 
   return (
     <div className="container">

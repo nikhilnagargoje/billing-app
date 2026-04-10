@@ -10,7 +10,24 @@ import "../styles/stock.css"; // tuzya updated CSS
 
 export default function Stock() {
   const [products, setProducts] = useState([]);
-  const userId = auth.currentUser?.uid;
+  const [userId, setUserId] = useState(null);
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserId(user.uid);
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
+useEffect(() => {
+  if (userId) {
+    fetchProducts();
+  }
+}, [userId]);
+
 
   const fetchProducts = async () => {
     if (!userId) return;
@@ -26,10 +43,6 @@ export default function Stock() {
       }))
     );
   };
-
-  useEffect(() => {
-    fetchProducts();
-  }, [userId]);
 
   // ✅ SET STOCK
   const setStock = async (id, value) => {

@@ -7,7 +7,23 @@ export default function Bills() {
   const [bills, setBills] = useState([]);
   const [allBills, setAllBills] = useState([]);
   const [search, setSearch] = useState("");
-  const userId = auth.currentUser?.uid;
+  const [userId, setUserId] = useState(null);
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserId(user.uid);
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
+useEffect(() => {
+  if (userId) {
+    fetchBills();
+  }
+}, [userId]);
 
   const fetchBills = async () => {
     if (!userId) return;
@@ -20,8 +36,6 @@ export default function Bills() {
     setBills(billsData);
     setAllBills(billsData);
   };
-
-  useEffect(() => { fetchBills(); }, [userId]);
 
   // Search
   useEffect(() => {
