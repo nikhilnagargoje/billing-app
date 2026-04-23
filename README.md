@@ -1,16 +1,50 @@
-# React + Vite
+# 💼 Advanced Billing App (Multi-User + Firebase)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A scalable billing application built using React and Firebase.  
+Designed for real-world shop usage with multi-user access, authentication, and invoice management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
+- 🧾 Instant invoice generation
+- 🔐 User authentication (Login / Signup)
+- 👥 Multi-user support (usable by multiple shop users)
+- ☁️ Firebase integration for real-time data storage
+- 📊 Basic sales analysis
+- ⚙️ Customizable based on business requirements
+- 💻 Responsive and clean UI
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+- React.js
+- JavaScript
+- CSS
+- Vite
+- Firebase (Auth + Firestore)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚡ Key Highlights
+- Multi-user system with secure login
+- Real-time database integration using Firebase
+- Designed for practical shop usage
+- Built using AI-assisted development and customized manually
+- Structured to scale into a full business software
+
+---
+
+## 🔗 Live Demo
+billing-app-seven-pi.vercel.app
+
+---
+
+## 📌 Future Improvements
+- PDF invoice download
+- Advanced analytics dashboard
+- Performance optimization
+
+---
+
+## 👨‍💻 About Me
+Frontend developer focused on building real-world applications using modern tools and AI-assisted workflows.
