@@ -9,6 +9,7 @@ import Analytics from "./pages/Analytics";
 import Customers from "./pages/Customers";
 import CustomerDetails from "./pages/CustomerDetails";
 import "./styles/components.css";
+import Chatbot from "./components/Chatbot";
 import "./styles/global.css";
 import Stock from "./pages/Stock";
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/customer/:id" element={<CustomerDetails />} />
         <Route path="/stock" element={<Stock />} />
       </Routes>
+      <Chatbot />
     </BrowserRouter>
   );
 }
